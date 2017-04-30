@@ -4,10 +4,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name = "endereco", schema = "spring_two")
+@NamedQueries({
+@NamedQuery(name="EmailDomainTrust.getEmailDomains",
+    query="SELECT e FROM Endereco e")          
+})
 public class Endereco {
 
 	@Id
@@ -16,7 +22,7 @@ public class Endereco {
 	private Long id;
 
 	@Column
-	private String endereco;
+	private String rua;
 
 	public Long getId() {
 		return id;
@@ -26,20 +32,20 @@ public class Endereco {
 		this.id = id;
 	}
 
-	public String getEndereco() {
-		return endereco;
+	public String getRua() {
+		return rua;
 	}
 
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+	public void setRua(String rua) {
+		this.rua = rua;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((endereco == null) ? 0 : endereco.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((rua == null) ? 0 : rua.hashCode());
 		return result;
 	}
 
@@ -55,13 +61,6 @@ public class Endereco {
 			return false;
 		}
 		Endereco other = (Endereco) obj;
-		if (endereco == null) {
-			if (other.endereco != null) {
-				return false;
-			}
-		} else if (!endereco.equals(other.endereco)) {
-			return false;
-		}
 		if (id == null) {
 			if (other.id != null) {
 				return false;
@@ -69,6 +68,14 @@ public class Endereco {
 		} else if (!id.equals(other.id)) {
 			return false;
 		}
+		if (rua == null) {
+			if (other.rua != null) {
+				return false;
+			}
+		} else if (!rua.equals(other.rua)) {
+			return false;
+		}
 		return true;
 	}
+
 }
