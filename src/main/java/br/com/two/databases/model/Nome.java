@@ -11,8 +11,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "nomes")
 @NamedQueries({
-@NamedQuery(name="EmailDomainTrust.getNomes",
-    query="SELECT e FROM Nome e")          
+@NamedQuery(name="Nome.getNomes", query="SELECT e FROM Nome e")          
 })
 public class Nome {
 

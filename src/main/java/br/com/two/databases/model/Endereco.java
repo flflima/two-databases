@@ -11,8 +11,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "endereco", schema = "spring_two")
 @NamedQueries({
-@NamedQuery(name="EmailDomainTrust.getEmailDomains",
-    query="SELECT e FROM Endereco e")          
+@NamedQuery(name="Endereco.getEnderecos", query="SELECT e FROM Endereco e")          
 })
 public class Endereco {
 
